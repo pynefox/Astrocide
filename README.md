@@ -11,7 +11,7 @@ The comet comes closer each night, until what seems to be a small rouge piece of
 It turns out that it was actually a lander for hostile aliens. You will have to fend them off whilst collecting data for the rest of the game (until you are picked up by the science organization that dropped you off)
 
 Gameplay:
-Point-and-click, no freeroam.
+Point-and-click, or possibly freeroam.
 Your goal is to make it through each night or complete your objective by collecting data (whichever comes first) and survive.
 There are 9 nights. You fend off wild animals for nights 1 to 3, animals and a single easy alien on night 4, and only aliens for nights 5 to 9
 The wild animals are used to introduce mechanics and ease into the harder difficulty and more aggressive aliens.
