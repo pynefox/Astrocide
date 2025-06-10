@@ -2,27 +2,58 @@ using UnityEngine;
 
 public class UraniumTest : MonoBehaviour
 {
-    public GameObject blacklightcollider; // Reference to the blacklight collider GameObject
     public Material normalMaterial; // Material to apply when not glowing
     public Material glowingMaterial; // Material to apply when glowing
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private int triggersPresent = 0;
+
     void Start()
     {
-        
+        GetComponent<Renderer>().material = normalMaterial;
     }
 
-    // Update is called once per frame
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("purplelightbeam"))
+        {
+            triggersPresent++;
+            GetComponent<Renderer>().material = glowingMaterial;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("purplelightbeam"))
+        {
+            triggersPresent = Mathf.Max(0, triggersPresent - 1);
+            if (triggersPresent == 0)
+            {
+                GetComponent<Renderer>().material = normalMaterial;
+            }
+        }
+    }
+
     void Update()
     {
-        //when the black light collider touches this object's collider change the material of this object to "glowing", else set it to "normal"
-        if (blacklightcollider.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds))
+        // If a trigger disappears without calling OnTriggerExit, triggersPresent may be > 0.
+        // Check if any purplelightbeam triggers are still present.
+        if (triggersPresent > 0)
         {
-            GetComponent<Renderer>().material = glowingMaterial; // Change to glowing material
+            bool found = false;
+            Collider[] overlaps = Physics.OverlapSphere(transform.position, 1.0f); // Adjust radius as needed
+            foreach (var col in overlaps)
+            {
+                if (col.CompareTag("purplelightbeam"))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                triggersPresent = 0;
+                GetComponent<Renderer>().material = normalMaterial;
+            }
         }
-        else
-        {
-            GetComponent<Renderer>().material = normalMaterial; // Change to normal material
-        }
-
     }
 }
