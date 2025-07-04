@@ -27,7 +27,7 @@ public class GearSway : MonoBehaviour
         }
         else
         {
-            // Active sway
+            // Active sway when player is moving
             transform.localPosition = new Vector3(
                 Mathf.Sin(Time.time * (2 * Mathf.PI / activeswayinterval)) * activeswayamount,
                 transform.localPosition.y,
