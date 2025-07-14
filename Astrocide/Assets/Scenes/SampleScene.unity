@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 2.5
+  m_AmbientIntensity: 8
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 37c6b89453d38784e804e15d76343713, type: 2}
@@ -1959,6 +1959,75 @@ MonoBehaviour:
     m_Bits: 1024
   grounded: 0
   orientation: {fileID: 1584197914}
+--- !u!1001 &1103767477
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65529
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65529
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.65529
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.2913
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0131
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.7278
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771091787928289351, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
+      propertyPath: m_Name
+      value: Bed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: -4161369568681901532, guid: 25ebdb75f88b8894faa4c089facd46c0, type: 3}
 --- !u!1001 &1149220664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3626,3 +3695,4 @@ SceneRoots:
   - {fileID: 616225841}
   - {fileID: 1753663176}
   - {fileID: 1445312937}
+  - {fileID: 1103767477}
