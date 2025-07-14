@@ -75,4 +75,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Large Files
-Assets/Real Stars Skybox/
+/Assets/Real Stars Skybox/
