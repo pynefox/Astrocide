@@ -8,7 +8,6 @@ public class InteractRaycast : MonoBehaviour
     public Camera playerCamera; // Reference to the player's camera
 
     [SerializeField] private float indicatorTimer = 0.5f; //time it takes to interact with an object while the raycast is touching it and the player is holding the interact button
-    [SerializeField] private float maxIndicatorTimer = 0.5f; //maximum time the indicator can be shown
 
     [SerializeField] private Image indicatorImage; //UI image that shows the interaction progress
 
@@ -16,7 +15,12 @@ public class InteractRaycast : MonoBehaviour
 
     [SerializeField] private UnityEvent onInteract; //Event to call when the player interacts with an object
 
-    private bool shouldUpdate = false;
+    [SerializeField] private GameObject interactSensor;
+    [SerializeField] private float interactSensorActiveTime = 0.1f; // Duration in seconds
+
+    private float interactSensorTimer = 0f;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,36 +36,38 @@ public class InteractRaycast : MonoBehaviour
         //make the raycast visible in the editor for debugging purposes
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
 
-        //check if the raycast hits an object tagged with "toggleTest"
-        if (Physics.Raycast(ray, out RaycastHit hit, rayLength) && hit.collider.CompareTag("toggleTest"))
+        // Handle interactSensor activation timer
+        if (interactSensorTimer > 0f)
         {
-            //if the player is holding the interact key
-            if (Input.GetKey(interactKey))
+            interactSensor.SetActive(true);
+            interactSensorTimer -= Time.deltaTime;
+        }
+        else
+        {
+            interactSensor.SetActive(false);
+        }
+
+        //interact with an object with interactsensor if the raycast hits it and the timer is filled. 
+        if (Physics.Raycast(ray, out RaycastHit hit, rayLength) && hit.collider.CompareTag("Interactable") && Input.GetKey(interactKey))
+        {
+            // Show the interaction indicator
+            indicatorImage.fillAmount += Time.deltaTime / indicatorTimer;
+            // If the interaction is complete, call the onInteract event
+            if (indicatorImage.fillAmount >= 1f)
             {
-                //show the indicator image and update its fill amount based on the timer
-                shouldUpdate = true;
-                indicatorImage.fillAmount = Mathf.Clamp01(indicatorImage.fillAmount + Time.deltaTime / maxIndicatorTimer);
-                
-                //if the fill amount reaches 1, invoke the interaction event
-                if (indicatorImage.fillAmount >= 1f)
-                {
-                    onInteract.Invoke();
-                    indicatorImage.fillAmount = 0f; //reset the indicator
-                }
-            }
-            else
-            {
-                //if the player is not holding the interact key, reset the indicator
-                shouldUpdate = false;
-                indicatorImage.fillAmount = 0f;
+                onInteract.Invoke();
+                // Activate interactSensor for a set duration
+                interactSensorTimer = interactSensorActiveTime;
+
+                indicatorImage.fillAmount = 0f; // Reset the indicator
             }
         }
         else
         {
-            //if the raycast does not hit an object, reset the indicator
-            shouldUpdate = false;
+            // Hide the interaction indicator if not interacting
             indicatorImage.fillAmount = 0f;
         }
+
 
     }
 }

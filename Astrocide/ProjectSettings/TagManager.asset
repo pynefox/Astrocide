@@ -6,6 +6,8 @@ TagManager:
   tags:
   - purplelightbeam
   - toggleTest
+  - Interactable
+  - PlayerInteract
   layers:
   - Default
   - TransparentFX
