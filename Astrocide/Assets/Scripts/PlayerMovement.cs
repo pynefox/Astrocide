@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    public bool disableMovement; //disables WASD movement when true, used for sitting at computer and cutscenes
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

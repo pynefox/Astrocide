@@ -3,10 +3,9 @@ using UnityEngine;
 public class SitAtComputer : MonoBehaviour
 {
     public bool isSitting = false; // Flag to track if the player is currently sitting
-    public GameObject sitDownCamera; // Reference to the camera that will be used when the player is sitting at the computer
-    public GameObject playerCamera; // Reference to the player's main camera
-    public GameObject mainPlayerUi; // Reference to the player's main UI canvas to disable when sitting at the computer.
-    public GameObject playerToHide; // Reference to the player model to hide when sitting at the computer
+    public GameObject sitdownLocation; // Reference to the location where the player should be moved when sitting down
+    public GameObject player; // Reference to the player GameObject
+    public GameObject toolsToHide; // Reference to the tools that should be hidden when sitting down
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,29 +23,24 @@ public class SitAtComputer : MonoBehaviour
     {
         if (other.CompareTag("PlayerInteract") && !isSitting)
         {
-            //fade screen to black and move the player to the computer position, then fade back in
+            // Move the player to the sitdown location
+            player.transform.position = sitdownLocation.transform.position;
+            // Hide the tools
+            toolsToHide.SetActive(false);
+            //set disableMovement to true on the PlayerMovement script
+            player.GetComponent<PlayerMovement>().disableMovement = true;
             isSitting = true;
-            playerCamera.SetActive(false);
-            sitDownCamera.SetActive(true);
-            mainPlayerUi.SetActive(false);
-            playerToHide.SetActive(false);
-            //disable audio listener on player camera and enable it on sit down camera
-            playerCamera.GetComponent<AudioListener>().enabled = false;
-            sitDownCamera.GetComponent<AudioListener>().enabled = true;
-            //enable mouse pointer for computer interaction
-            Cursor.lockState = CursorLockMode.None;
         }
-        //press E to leave computer and return to normal player camera. The interact is attached to the player which is hidden.
-        else if (Input.GetKeyDown(KeyCode.E) && isSitting)
+        
+        else if (other.CompareTag("PlayerInteract") && isSitting)
         {
+            // Move the player back to the original position
+            player.transform.position = sitdownLocation.transform.position;
+            // Show the tools
+            toolsToHide.SetActive(true);
+            //set disableMovement to false on the PlayerMovement script
+            player.GetComponent<PlayerMovement>().disableMovement = false;
             isSitting = false;
-            playerCamera.SetActive(true);
-            sitDownCamera.SetActive(false);
-            mainPlayerUi.SetActive(true);
-            playerToHide.SetActive(true);
-            //enable audio listener on player camera and disable it on sit down camera
-            playerCamera.GetComponent<AudioListener>().enabled = true;
-            sitDownCamera.GetComponent<AudioListener>().enabled = false;
         }
 
     }
