@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -57,6 +56,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
+        if (disableMovement)
+        {
+            horizontalInput = 0f;
+            verticalInput = 0f;
+            return;
+        }
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }

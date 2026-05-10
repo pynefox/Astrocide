@@ -10,9 +10,11 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
-
     void Start()
     {
+        //stores camera's initial rotation relative to the player, can be used to reset the camera if needed.
+        // -------to be made later-------------
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

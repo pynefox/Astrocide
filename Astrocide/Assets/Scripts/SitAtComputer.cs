@@ -6,6 +6,7 @@ public class SitAtComputer : MonoBehaviour
     public GameObject sitdownLocation; // Reference to the location where the player should be moved when sitting down
     public GameObject player; // Reference to the player GameObject
     public GameObject toolsToHide; // Reference to the tools that should be hidden when sitting down
+    public GameObject playerCam; // Reference to the player's camera
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +41,8 @@ public class SitAtComputer : MonoBehaviour
             toolsToHide.SetActive(true);
             //set disableMovement to false on the PlayerMovement script
             player.GetComponent<PlayerMovement>().disableMovement = false;
+            //refresh offset of the player camera, gets shifted a few degrees when sitting down and standing up
+            // -------to be made later-------------
             isSitting = false;
         }
 
