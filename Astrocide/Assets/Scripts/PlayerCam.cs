@@ -14,6 +14,8 @@ public class PlayerCam : MonoBehaviour
     {
         //stores camera's initial rotation relative to the player, can be used to reset the camera if needed.
         // -------to be made later-------------
+        //prints the difference in rotation between the camera and the player
+
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -34,6 +36,14 @@ public class PlayerCam : MonoBehaviour
         //rotate camera
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         //rotate orientation
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    public void ResetCameraRotation()
+    {
+        xRotation = 0f;
+        yRotation = 0f;
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

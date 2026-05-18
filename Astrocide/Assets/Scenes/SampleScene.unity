@@ -1982,7 +1982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630276964}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.1363494, y: 1.7666063, z: -4.088663}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3225,7 +3225,7 @@ MonoBehaviour:
   sitdownLocation: {fileID: 1819971942}
   player: {fileID: 1063520144}
   toolsToHide: {fileID: 495701417}
-  playerCam: {fileID: 550831523}
+  playerCamHolder: {fileID: 630276964}
 --- !u!54 &1094290411
 Rigidbody:
   m_ObjectHideFlags: 0
